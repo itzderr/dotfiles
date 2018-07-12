@@ -39,7 +39,14 @@ set clipboard=unnamed
 " Automatically reload .vimrc when saved 
 au BufWritePost .vimrc so ~/.vimrc
 
-" vim-plug
+" Automatic vim-plug installation
+if empty(glob('~/.vim/autoload/plug.vim'))
+silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+  \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Vim-plug
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'

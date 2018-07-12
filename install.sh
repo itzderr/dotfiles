@@ -17,12 +17,11 @@ sudo rm -rf ~/.g.sh > /dev/null 2>&1
 # Create symlinks in the home folder
 # (excluding .git/)
 #=====================
-for f in .[^.]*[^t]
+for f in ~/dotfiles/.[^.]*[^t]
 do
-    ln -s "$f" "~/$f"
-    echo "\nSymlinking $f to ~/$f"
+    ln -s "$f" "$HOME/${f##*/}"
+    echo -e "\nSymlinking $f to $HOME/${f##*/}"
 done
 
-echo "\n======= All Done!! =======\n"
-echo 
+echo -e "\n======= All Done!! =======\n"
 echo "-Derrick"
