@@ -2,7 +2,7 @@
  
 ## Installation
 ```bash
-$ git clone htxtps://github.com/itzderr/dotfiles
+$ git clone https://github.com/itzderr/dotfiles ~/dotfiles
 $ cd dotfiles
 $ bash install.sh
 ```
