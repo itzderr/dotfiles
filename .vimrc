@@ -29,8 +29,10 @@ nnoremap <C-l> <C-w>l
 nnoremap <CR> i<CR><ESC>
 
 " Allow usage of mouse in iTerm
-set ttyfast
 set mouse=a
+
+" Fast terminal connection
+set ttyfast
 
 " Copy paste to/from clipboard
 map <silent><leader>p :set paste<CR>"*]p:set nopaste<CR>"
@@ -58,6 +60,9 @@ Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
