@@ -7,9 +7,9 @@ syntax enable
 set nocompatible  
 set ruler
 set number
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
+set softtabstop=4 " Keep the default tab stop size of 8 but show 4
+set shiftwidth=4 " Auto-Indentation >> << ==
+set noexpandtab " Tab -> Spaces (x) 
 set showcmd
 set incsearch
 set hlsearch
