@@ -14,10 +14,10 @@ set showcmd
 set incsearch
 set hlsearch
 set backspace=2 " Make backspace work like most other app
-set colorcolumn=80
+set colorcolumn=88
 set splitbelow
 set splitright
-highlight ColorColumn ctermbg=darkgray
+highlight ColorColumn ctermbg=yellow
 
 " Window Navigation
 nnoremap <C-h> <C-w>h
@@ -65,6 +65,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
+
+" Ale
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 
 " NerdTree
 noremap <silent><leader>t :NERDTreeToggle<CR>
