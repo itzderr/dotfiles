@@ -1,23 +1,68 @@
-" Enable filetype detection
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""		  
+" => General settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Enable filetype plugins
 filetype plugin on
 filetype plugin indent on
 syntax enable
-		    
-" General settings
+
+" Disable strange Vi defaults
 set nocompatible  
+
+" Set ruler & line number
 set ruler
 set number
-set softtabstop=4 " Keep the default tab stop size of 8 but show 4
-set shiftwidth=4 " Auto-Indentation >> << ==
-set noexpandtab " Tab -> Spaces (x) 
+
+" Keep the default tab stop size of 2
+set tabstop=2
+
+" Auto-Indentation >> << ==
+set shiftwidth=2 
+
+" Use spaces instead of tabs 
+set expandtab 
+
+" Show commands
 set showcmd
+
+" Ignore case when searching
+set ignorecase 
+
+" When searching try to be smart about cases
+set smartcase
+
+" Makes search act like search in modern browsers
 set incsearch
+
+" Highlight search results
 set hlsearch
-set backspace=2 " Make backspace work like most other app
-set colorcolumn=88
+
+" Make backspace work like most other app
+set backspace=2
 set splitbelow
 set splitright
-highlight ColorColumn ctermbg=yellow
+set colorcolumn=80
+highlight ColorColumn ctermbg=red
+
+" Allow usage of mouse in iTerm
+set mouse=a
+
+" Fast terminal connection
+set ttyfast
+
+" Disable any annoying beeps on errors
+set noerrorbells
+set visualbell
+
+" Language Specific
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Mappings, etc
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Window Navigation
 nnoremap <C-h> <C-w>h
@@ -28,18 +73,29 @@ nnoremap <C-l> <C-w>l
 " Line break
 nnoremap <CR> i<CR><ESC>
 
-" Allow usage of mouse in iTerm
-set mouse=a
-
-" Fast terminal connection
-set ttyfast
+" Y yanks from the cursor to the end of line.
+nnoremap Y y$
 
 " Copy paste to/from clipboard
 map <silent><leader>p :set paste<CR>"*]p:set nopaste<CR>"
 set clipboard=unnamed
 
+" Return to last edit position when opening files
+autocmd BufReadPost *
+	    \ if line ("'\"") > 0 && line("'\"") <= line("$") |
+	    \   exe "normal! g`\"" | 
+	    \ endif
+
+" Remember info about open buffers on close
+set viminfo^=%
+
 " Automatically reload .vimrc when saved 
 au BufWritePost .vimrc so ~/.vimrc
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Plug
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Automatic vim-plug installation
 if empty(glob('~/.vim/autoload/plug.vim'))
