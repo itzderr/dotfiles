@@ -11,6 +11,9 @@ fi
 # Brew update
 brew update
 
+# Install python3
+brew install python3
+
 # Install vim
 brew install macvim --with-override-system-vim
 
@@ -19,9 +22,6 @@ brew install cmake
 
 # Install git
 brew install git
-
-# Install python
-brew install python3
 
 # Install powerline
 pip3 install powerline-status

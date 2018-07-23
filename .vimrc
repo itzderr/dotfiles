@@ -52,9 +52,10 @@ set mouse=a
 set ttyfast
 
 " Disable any annoying beeps on errors
-set noerrorbells
-set visualbell
-
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+	autocmd GUIEnter * set visualbell t_vb=
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings, etc
@@ -114,7 +115,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
 
 call plug#end()
 
@@ -149,3 +150,5 @@ set rtp+=/usr/local/lib/python3.7/site-packages/powerline/bindings/vim
 set laststatus=2
 set t_Co=256
 
+" YouCompleteMe C-lang
+let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
