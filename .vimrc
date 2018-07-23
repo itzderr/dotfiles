@@ -110,7 +110,6 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'raimondi/delimitmate'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
