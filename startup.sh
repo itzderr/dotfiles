@@ -20,9 +20,6 @@ brew install macvim --with-override-system-vim
 # Install cmake for ycm
 brew install cmake
 
-# Install git
-brew install git
-
 # Install powerline
 pip3 install powerline-status
 
