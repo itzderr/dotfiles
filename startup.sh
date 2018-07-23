@@ -3,13 +3,19 @@
 # Startup script
 
 # Install brew
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if ! [ `which brew` ]
+then
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 # Brew update
 brew update
 
 # Install vim
-brew install vim
+brew install macvim --with-override-system-vim
+
+# Install cmake for ycm
+brew install cmake
 
 # Install git
 brew install git

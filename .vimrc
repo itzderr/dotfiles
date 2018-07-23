@@ -55,10 +55,6 @@ set ttyfast
 set noerrorbells
 set visualbell
 
-" Language Specific
-autocmd FileType html setlocal shiftwidth=2 tabstop=2
-autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings, etc
@@ -111,20 +107,23 @@ Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'raimondi/delimitmate'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 
 call plug#end()
 
 " Ale
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+
+" Allow jsx syntax highlighting for .js files
+let g:jsx_ext_required = 0
 
 " NerdTree
 noremap <silent><leader>t :NERDTreeToggle<CR>
