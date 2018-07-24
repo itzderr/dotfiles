@@ -15,10 +15,10 @@ set ruler
 set number
 
 " Keep the default tab stop size of 2
-set tabstop=2
+set tabstop=4
 
 " Auto-Indentation >> << ==
-set shiftwidth=2 
+set shiftwidth=4 
 
 " Use spaces instead of tabs 
 set expandtab 
@@ -151,3 +151,4 @@ set t_Co=256
 
 " YouCompleteMe C-lang
 let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+highlight Pmenu ctermfg=10 ctermbg=0 guifg=#ffffff guibg=#000000
