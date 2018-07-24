@@ -4,39 +4,31 @@
 
 " Enable filetype plugins
 filetype plugin on
-filetype plugin indent on
+filetype indent on
 syntax enable
 
 " Disable strange Vi defaults
 set nocompatible  
 
+" Color scheme
+colorscheme desert
+
 " Set ruler & line number
 set ruler
 set number
 
-" Keep the default tab stop size of 2
-set tabstop=4
-
-" Auto-Indentation >> << ==
-set shiftwidth=4 
-
-" Use spaces instead of tabs 
-set expandtab 
-
-" Show commands
-set showcmd
-
-" Ignore case when searching
-set ignorecase 
-
-" When searching try to be smart about cases
-set smartcase
-
-" Makes search act like search in modern browsers
-set incsearch
-
-" Highlight search results
-set hlsearch
+set tabstop=2       " Keep the default tab stop size of 2 
+set shiftwidth=2    " Auto-Indentation >> << == 
+set expandtab       " Use spaces instead of tabs 
+set smarttab        " Be smart when using tabs
+set autoindent      " Auto indent
+set smartindent         " Smart indent
+set wrap            " Wrap lines
+set showcmd         " Show commands
+set ignorecase      " Ignore case when searching
+set smartcase       " When searching try to be smart about cases
+set incsearch       " Makes search act like search in modern browsers
+set hlsearch        " Highlight search results
 
 " Make backspace work like most other app
 set backspace=2
@@ -45,11 +37,8 @@ set splitright
 set colorcolumn=80
 highlight ColorColumn ctermbg=red
 
-" Allow usage of mouse in iTerm
-set mouse=a
-
-" Fast terminal connection
-set ttyfast
+set mouse=a         " Allow usage of mouse in iTerm
+set ttyfast         " Fast terminal connection
 
 " Disable any annoying beeps on errors
 set noerrorbells visualbell t_vb=
@@ -107,7 +96,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'raimondi/delimitmate'
+" Plug 'raimondi/delimitmate'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
