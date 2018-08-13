@@ -22,7 +22,7 @@ set shiftwidth=2    " Auto-Indentation >> << ==
 set expandtab       " Use spaces instead of tabs 
 set smarttab        " Be smart when using tabs
 set autoindent      " Auto indent
-set smartindent         " Smart indent
+set smartindent     " Smart indent
 set wrap            " Wrap lines
 set showcmd         " Show commands
 set ignorecase      " Ignore case when searching
@@ -61,6 +61,10 @@ nnoremap <CR> i<CR><ESC>
 
 " Y yanks from the cursor to the end of line.
 nnoremap Y y$
+
+" d<space> delete or change until the space
+nnoremap d<space> dt<space>
+nnoremap c<space> ct<space>
 
 " Copy paste to/from clipboard
 map <silent><leader>p :set paste<CR>"*]p:set nopaste<CR>"
@@ -104,10 +108,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
+Plug 'alpertuna/vim-header'
 
 call plug#end()
 
 " Ale
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
@@ -141,3 +147,9 @@ set t_Co=256
 " YouCompleteMe C-lang
 let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 highlight Pmenu ctermfg=10 ctermbg=0 guifg=#ffffff guibg=#000000
+
+" vim-header
+let g:header_auto_add_header = 0
+let g:header_field_author = 'Derrick Park'
+let g:header_field_autohr_email = 'park@wincbay.com'
+let g:header_field_timestamp_format = '%c'

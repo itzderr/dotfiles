@@ -71,3 +71,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Add g functions
 source ~/.g.sh
 
+mkdircd() {
+  mkdir $1 && cd $1
+}
