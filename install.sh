@@ -12,6 +12,7 @@ sudo rm -rf ~/.git-completion.bash > /dev/null 2>&1
 sudo rm -rf ~/.gitconfig > /dev/null 2>&1
 sudo rm -rf ~/.gitignore_global > /dev/null 2>&1
 sudo rm -rf ~/.g.sh > /dev/null 2>&1
+sudo rm -rf ~/.gvimrc > /dev/null 2>&1
 
 #=====================
 # Create symlinks in the home folder

@@ -151,5 +151,5 @@ highlight Pmenu ctermfg=10 ctermbg=0 guifg=#ffffff guibg=#000000
 " vim-header
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Derrick Park'
-let g:header_field_autohr_email = 'park@wincbay.com'
+let g:header_field_author_email = 'park@wincbay.com'
 let g:header_field_timestamp_format = '%c'
