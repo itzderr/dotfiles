@@ -98,9 +98,9 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'raimondi/delimitmate'
+Plug 'tpope/vim-commentary'
 Plug 'w0rp/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
