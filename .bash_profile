@@ -74,3 +74,7 @@ source ~/.g.sh
 mkdircd() {
   mkdir $1 && cd $1
 }
+
+# nvm stuff
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
