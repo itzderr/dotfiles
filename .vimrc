@@ -110,8 +110,12 @@ Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
 Plug 'alpertuna/vim-header'
 Plug 'junegunn/vim-easy-align'
+Plug 'vim-airline/vim-airline'
 
 call plug#end()
+
+" Vim-airline
+let g:airline_powerline_fonts = 1
 
 " Ale
 let g:ale_lint_on_text_changed = 'never'
@@ -139,11 +143,6 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " Autocommand for format on save
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
-
-" Powerline
-set rtp+=/usr/local/lib/python3.7/site-packages/powerline/bindings/vim
-set laststatus=2
-set t_Co=256
 
 " YouCompleteMe C-lang
 let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'

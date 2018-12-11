@@ -7,15 +7,15 @@
 # Enable git tab completion 
 source ~/.git-completion.bash
 
-# Powerline
-powerline-daemon -q
-POWERLINE_BASH_CONTINUATION=1
-POWERLINE_BASH_SELECT=1
-source /usr/local/lib/python3.7/site-packages/powerline/bindings/bash/powerline.sh
+# bash-git-prompt
+if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
+  GIT_PROMPT_ONLY_IN_REPO=1
+  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+fi
 
 # Change command prompt
-# export GIT_PS1_SHOWDIRTYSTATE=1
-# export PS1="[\[\033[0;31m\]$(__git_ps1)\[\033[0;36m\] \W \[\033[0m\]] \[\033[1;35m\]$ \[\033[0m\]"
+# export PS1="[\[\033[0;31m\]\[\033[0;36m\] \W \[\033[0m\]] \[\033[1;35m\]$ \[\033[0m\]"
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:/Users/park/Library/Android/sdk/platform-tools"
 
@@ -55,7 +55,7 @@ alias grep='grep --color=auto'
 alias readlink='greadlink'
 alias npmlsg="npm ls -g --depth=0 "$@" 2>/dev/null"
 alias npmls="npm ls --depth=0 "$@" 2>/dev/null"
-
+alias lightsail='ssh ubuntu@18.237.117.13'
 
 # iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

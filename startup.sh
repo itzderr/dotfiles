@@ -11,6 +11,9 @@ fi
 # Brew update
 brew update
 
+# Install bash-git-prompt
+brew install bash-git-prompt
+
 # Install python3
 brew install python3
 
@@ -19,9 +22,6 @@ brew install macvim --with-override-system-vim
 
 # Install cmake for ycm
 brew install cmake
-
-# Install powerline
-pip3 install powerline-status
 
 # Run dotfiles install script 
 bash install.sh
