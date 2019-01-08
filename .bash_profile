@@ -10,7 +10,8 @@ source ~/.git-completion.bash
 # bash-git-prompt
 if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
-  GIT_PROMPT_ONLY_IN_REPO=1
+  GIT_PROMPT_ONLY_IN_REPO=0
+  GIT_PROMPT_THEME=Solarized
   source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
@@ -55,7 +56,7 @@ alias grep='grep --color=auto'
 alias readlink='greadlink'
 alias npmlsg="npm ls -g --depth=0 "$@" 2>/dev/null"
 alias npmls="npm ls --depth=0 "$@" 2>/dev/null"
-alias lightsail='ssh ubuntu@18.237.117.13'
+alias lightsail='ssh ubuntu@52.42.93.133'
 
 # iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"

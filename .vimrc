@@ -147,6 +147,8 @@ autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --
 " YouCompleteMe C-lang
 let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 highlight Pmenu ctermfg=10 ctermbg=0 guifg=#ffffff guibg=#000000
+let g:ycm_rust_src_path = '/Users/park/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
+nnoremap <Leader>] :YcmCompleter GoTo<CR>
 
 " vim-header
 let g:header_auto_add_header = 0
@@ -157,3 +159,4 @@ let g:header_field_timestamp_format = '%c'
 " vim-easy-align
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
