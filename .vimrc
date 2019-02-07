@@ -109,7 +109,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
 Plug 'alpertuna/vim-header'
-Plug 'junegunn/vim-easy-align'
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
@@ -155,8 +154,3 @@ let g:header_auto_add_header = 0
 let g:header_field_author = 'Derrick Park'
 let g:header_field_author_email = 'park@wincbay.com'
 let g:header_field_timestamp_format = '%c'
-
-" vim-easy-align
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
