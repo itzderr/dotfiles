@@ -8,11 +8,11 @@
 source ~/.git-completion.bash
 
 # bash-git-prompt
-if [ -f "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-  __GIT_PROMPT_DIR=$(brew --prefix)/opt/bash-git-prompt/share
-  GIT_PROMPT_ONLY_IN_REPO=0
-  GIT_PROMPT_THEME=Solarized
-  source "$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh"
+if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
+  export __GIT_PROMPT_DIR="$(brew --prefix bash-git-prompt)/share"
+  export GIT_PROMPT_ONLY_IN_REPO=0
+  export GIT_PROMPT_THEME=Solarized
+  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
 fi
 
 # Change command prompt
@@ -65,6 +65,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 export SWIFTENV_ROOT="$HOME/.swiftenv"
 export PATH="$SWIFTENV_ROOT/bin:$PATH"
 eval "$(swiftenv init -)"
+export TOOLCHAINS=swift
 
 # rust (cargo)
 export PATH="$HOME/.cargo/bin:$PATH"
