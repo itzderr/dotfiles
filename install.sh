@@ -26,3 +26,5 @@ done
 
 echo -e "\n======= All Done!! =======\n"
 echo "-Derrick"
+
+source ~/.bash_profile
