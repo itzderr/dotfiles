@@ -8,11 +8,11 @@
 source ~/.git-completion.bash
 
 # bash-git-prompt
-if [ -f "$(brew --prefix bash-git-prompt)/share/gitprompt.sh" ]; then
-  export __GIT_PROMPT_DIR="$(brew --prefix bash-git-prompt)/share"
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  export __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
   export GIT_PROMPT_ONLY_IN_REPO=0
   export GIT_PROMPT_THEME=Solarized
-  source "$(brew --prefix bash-git-prompt)/share/gitprompt.sh"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
 
 # Change command prompt
