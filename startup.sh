@@ -23,6 +23,9 @@ brew install macvim
 # Install cmake for ycm
 brew install cmake
 
+# Install exa
+brew install exa
+
 # Run dotfiles install script 
 bash install.sh
 

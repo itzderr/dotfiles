@@ -154,3 +154,8 @@ let g:header_auto_add_header = 0
 let g:header_field_author = 'Derrick Park'
 let g:header_field_author_email = 'park@wincbay.com'
 let g:header_field_timestamp_format = '%c'
+
+" Additional Key-mapping
+map ,b :w<cr>:!clear && bash %<cr>
+map ,p :w<cr>:!clear && python3 %<cr>
+

@@ -6,6 +6,7 @@
 
 # Enable git tab completion 
 source ~/.git-completion.bash
+source ~/dotfiles/hub.bash_completion.sh
 
 # bash-git-prompt
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
@@ -32,8 +33,9 @@ export EDITOR=vim
 
 #   Aliases
 #   ------------------------------------------------------------
-alias ls='ls -GFh'
-alias ll='ls -lah'
+alias ls='exa'
+alias ll='exa -alh'
+alias tree='exa -T'
 alias reload='source ~/.bash_profile'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -80,3 +82,15 @@ mkdircd() {
 # nvm stuff
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
+
+# Add flutterSDK
+export PATH="$PATH:~/flutterSDK/flutter/bin"
+
+# Cabal
+export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+# Ruby
+export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
