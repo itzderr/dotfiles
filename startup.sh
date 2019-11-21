@@ -26,6 +26,9 @@ brew install cmake
 # Install exa
 brew install exa
 
+# Install hub
+brew install hub
+
 # Run dotfiles install script 
 bash install.sh
 
