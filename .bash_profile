@@ -6,7 +6,7 @@
 
 # Enable git tab completion 
 source ~/.git-completion.bash
-source ~/dotfiles/hub.bash_completion.sh
+source ~/dotfiles/.hub_bash_completion.sh
 
 # bash-git-prompt
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
@@ -59,6 +59,7 @@ alias readlink='greadlink'
 alias npmlsg="npm ls -g --depth=0 "$@" 2>/dev/null"
 alias npmls="npm ls --depth=0 "$@" 2>/dev/null"
 alias lightsail='ssh ubuntu@52.42.93.133'
+alias hubpr='hub pull-request'
 
 # iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
@@ -91,6 +92,9 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 # Ruby
 export PATH="/usr/local/lib/ruby/gems/2.6.0/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

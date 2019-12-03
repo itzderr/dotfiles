@@ -7,10 +7,13 @@ $ cd dotfiles
 $ bash install.sh
 ```
 
-## Powerline
-- To use powerline, 
-```bash
-$ brew install python3
-$ pip3 install powerline-status==2.6
+## bash-git-prompt config add the following in your .bash_profile
 ```
-- Install font
+# bash-git-prompt
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+  export __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  export GIT_PROMPT_ONLY_IN_REPO=0
+  export GIT_PROMPT_THEME=Solarized
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+```

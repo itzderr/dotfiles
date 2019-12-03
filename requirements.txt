@@ -1,4 +1,0 @@
-pep8==1.7.1
-powerline-status==2.6
-pyflakes==2.0.0
-virtualenv==16.0.0
