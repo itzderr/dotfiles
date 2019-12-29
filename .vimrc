@@ -10,9 +10,6 @@ syntax enable
 " Disable strange Vi defaults
 set nocompatible  
 
-" Color scheme
-colorscheme desert
-
 " Set ruler & line number
 set ruler
 set number
@@ -35,7 +32,7 @@ set backspace=2
 set splitbelow
 set splitright
 set colorcolumn=80
-highlight ColorColumn ctermbg=red
+highlight ColorColumn ctermbg=darkgrey
 
 set mouse=a         " Allow usage of mouse in iTerm
 set ttyfast         " Fast terminal connection
@@ -82,6 +79,9 @@ set viminfo^=%
 " Automatically reload .vimrc when saved 
 au BufWritePost .vimrc so ~/.vimrc
 
+" Additional Key-mapping
+map ,b :w<cr>:!clear && bash %<cr>
+map ,p :w<cr>:!clear && python3 %<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Plug
@@ -99,17 +99,18 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'raimondi/delimitmate'
 Plug 'tpope/vim-commentary'
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --js-completer' }
 Plug 'alpertuna/vim-header'
 Plug 'vim-airline/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
@@ -119,7 +120,8 @@ let g:airline_powerline_fonts = 1
 " Ale
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_completion_enabled = 0
 
 " Allow jsx syntax highlighting for .js files
 let g:jsx_ext_required = 0
@@ -143,19 +145,69 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 " Autocommand for format on save
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
-" YouCompleteMe C-lang
-let g:ycm_global_ycm_extra_conf = '/Users/park/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-highlight Pmenu ctermfg=10 ctermbg=0 guifg=#ffffff guibg=#000000
-let g:ycm_rust_src_path = '/Users/park/.rustup/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src'
-nnoremap <Leader>] :YcmCompleter GoTo<CR>
-
 " vim-header
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Derrick Park'
 let g:header_field_author_email = 'park@wincbay.com'
 let g:header_field_timestamp_format = '%c'
 
-" Additional Key-mapping
-map ,b :w<cr>:!clear && bash %<cr>
-map ,p :w<cr>:!clear && python3 %<cr>
+" vim-tagbar
+nmap <silent><leader>T :TagbarToggle<CR>
+
+" Color scheme
+colorscheme gruvbox
+
+""""""""""""""""""""""""
+" vim-coc intellisense "
+""""""""""""""""""""""""
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set cmdheight=2
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" Use tab for completion with chars ahead and navigate
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Language Specific
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Rust
+let g:rustfmt_autosave = 1
 
