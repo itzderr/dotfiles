@@ -7,6 +7,7 @@
 #=====================
 sudo rm -rf ~/.vim > /dev/null 2>&1
 sudo rm -rf ~/.vimrc > /dev/null 2>&1
+sudo rm -rf ~/.bashrc > /dev/null 2>&1
 sudo rm -rf ~/.bash_profile > /dev/null 2>&1
 sudo rm -rf ~/.git-completion.bash > /dev/null 2>&1
 sudo rm -rf ~/.gitconfig > /dev/null 2>&1
@@ -28,4 +29,5 @@ done
 echo -e "\n======= All Done!! =======\n"
 echo "-Derrick"
 
+source ~/.bashrc
 source ~/.bash_profile

@@ -26,6 +26,8 @@ set ignorecase      " Ignore case when searching
 set smartcase       " When searching try to be smart about cases
 set incsearch       " Makes search act like search in modern browsers
 set hlsearch        " Highlight search results
+set lazyredraw      " Lazy redraw
+set encoding=UTF-8  " Set encoding
 
 " Make backspace work like most other app
 set backspace=2
@@ -111,6 +113,12 @@ Plug 'vim-airline/vim-airline'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
+Plug 'jiangmiao/auto-pairs'
+Plug 'Yggdroot/indentLine'
+Plug 'ryanoasis/vim-devicons' " Probably need to install the fonts
+" PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'tpope/vim-eunuch'
 
 call plug#end()
 
@@ -128,6 +136,7 @@ let g:jsx_ext_required = 0
 
 " NerdTree
 noremap <silent><leader>t :NERDTreeToggle<CR>
+let g:NERDTreeShowHidden=1
 
 " Nerdcommenter
 let g:NERDSpaceDelims = 1

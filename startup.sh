@@ -26,6 +26,9 @@ brew install cmake
 # Install exa
 brew install exa
 
+# Install tmux
+brew install tmux
+
 # Install hub
 brew install hub
 
