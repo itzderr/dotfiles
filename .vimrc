@@ -100,13 +100,14 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'dense-analysis/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
 Plug 'alpertuna/vim-header'
 Plug 'vim-airline/vim-airline'
@@ -118,7 +119,10 @@ Plug 'Yggdroot/indentLine'
 Plug 'ryanoasis/vim-devicons' " Probably need to install the fonts
 " PlugInstall and PlugUpdate will clone fzf in ~/.fzf and run the install script
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'tpope/vim-eunuch'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'  " Unix commands in vim
+Plug 'AndrewRadev/splitjoin.vim'
+Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 
 call plug#end()
 
@@ -130,6 +134,15 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_enter = 0
 let g:ale_completion_enabled = 0
+let g:ale_linters = {
+\ 'sh': ['language_server'],
+\ 'javascript': ['eslint'],
+\ 'typescript': ['tsserver', 'tslint'],
+\ }
+let g:ale_fixers = {
+\ 'javascript': ['eslint'],
+\ 'typescript': ['prettier'],
+\ }
 
 " Allow jsx syntax highlighting for .js files
 let g:jsx_ext_required = 0
@@ -141,11 +154,6 @@ let g:NERDTreeShowHidden=1
 " Nerdcommenter
 let g:NERDSpaceDelims = 1
 
-" Ctrl-P
-let g:ctrlp_map = '<c-p>'
-nnoremap <leader>l :CtrlPLine<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-
 " Change cursor shape in different modes
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
@@ -153,6 +161,7 @@ let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 " Autocommand for format on save
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " vim-header
 let g:header_auto_add_header = 0
