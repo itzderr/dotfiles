@@ -18,18 +18,15 @@ brew install python3
 brew install bash-git-prompt
 
 # Install vim
-brew install macvim
+brew install macvim --with-override-system-vim
 
-# Install cmake for ycm
+# Install tools
 brew install cmake
-
-# Install exa
 brew install exa
-
-# Install tmux
+brew install bat
+brew install fd
+brew install ripgrep
 brew install tmux
-
-# Install hub
 brew install hub
 
 # Run dotfiles install script 
