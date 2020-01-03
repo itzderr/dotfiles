@@ -13,7 +13,7 @@ set nocompatible
 " Set ruler & line number
 set ruler
 set number
-
+set noshowmode      " Remove default mode indicator
 set tabstop=2       " Keep the default tab stop size of 2 
 set shiftwidth=2    " Auto-Indentation >> << == 
 set expandtab       " Use spaces instead of tabs 
@@ -28,14 +28,11 @@ set incsearch       " Makes search act like search in modern browsers
 set hlsearch        " Highlight search results
 set lazyredraw      " Lazy redraw
 set encoding=UTF-8  " Set encoding
-
-" Make backspace work like most other app
-set backspace=2
+set backspace=2     " Make backspace work like most other app
 set splitbelow
 set splitright
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgrey
-
 set mouse=a         " Allow usage of mouse in iTerm
 set ttyfast         " Fast terminal connection
 
@@ -44,6 +41,12 @@ set noerrorbells visualbell t_vb=
 if has('autocmd')
 	autocmd GUIEnter * set visualbell t_vb=
 endif
+
+" Change cursor shape in different modes
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings, etc
@@ -81,9 +84,14 @@ set viminfo^=%
 " Automatically reload .vimrc when saved 
 au BufWritePost .vimrc so ~/.vimrc
 
+" Autocommand for format on save
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
 " Additional Key-mapping
 map ,b :w<cr>:!clear && bash %<cr>
 map ,p :w<cr>:!clear && python3 %<cr>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-Plug
@@ -153,15 +161,6 @@ let g:NERDTreeShowHidden=1
 
 " Nerdcommenter
 let g:NERDSpaceDelims = 1
-
-" Change cursor shape in different modes
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-" Autocommand for format on save
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
-autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 
 " vim-header
 let g:header_auto_add_header = 0

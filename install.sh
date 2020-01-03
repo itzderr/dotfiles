@@ -14,7 +14,7 @@ sudo rm -rf ~/.gitconfig > /dev/null 2>&1
 sudo rm -rf ~/.gitignore_global > /dev/null 2>&1
 sudo rm -rf ~/.g.sh > /dev/null 2>&1
 sudo rm -rf ~/.gvimrc > /dev/null 2>&1
-sudo rm -rf ~/.hub_bash_completion.sh > /dev/null 2>&1
+sudo rm -rf ~/.tmux.conf > /dev/null 2>&1
 
 #=====================
 # Create symlinks in the home folder
@@ -25,6 +25,8 @@ do
     ln -s "$f" "$HOME/${f##*/}"
     echo -e "\nSymlinking $f to $HOME/${f##*/}"
 done
+
+cp ~/dotfiles/coc-settings.json ~/.vim/coc-settings.json
 
 echo -e "\n======= All Done!! =======\n"
 echo "-Derrick"
