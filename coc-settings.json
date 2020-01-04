@@ -15,6 +15,7 @@
   "diagnostic.virtualText": true,
   "diagnostic.checkCurrentLine": true,
   "python.jediEnabled": false,
+  "suggest.timeout": 2000,
   "languageserver": {
     "ccls": {
       "command": "ccls",
@@ -33,6 +34,13 @@
           ]
         }
       }
+    },
+    "swift": {
+      "command": "sourcekit-lsp",
+      "args": [],
+      "filetypes": ["swift"],
+      "initializationOptions": {},
+      "settings": {}
     },
     "dart": {
       "command": "dart",

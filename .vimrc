@@ -47,6 +47,10 @@ let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_SR = "\<Esc>]50;CursorShape=2\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
+" Default file type for .m and .mm
+let filetype_m='objc'
+let filetype_mm='objcpp'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings, etc
@@ -146,6 +150,10 @@ let g:ale_linters = {
 \ 'sh': ['language_server'],
 \ 'javascript': ['eslint'],
 \ 'typescript': ['tsserver', 'tslint'],
+\ 'cpp': [],
+\ 'c': [],
+\ 'objc': [],
+\ 'objcpp': [],
 \ }
 let g:ale_fixers = {
 \ 'javascript': ['eslint'],
