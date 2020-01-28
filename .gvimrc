@@ -1,5 +1,5 @@
 " set macligatures
-set guifont=Hack\ Nerd\ Font:h15
+set guifont=JetBrainsMono\ Nerd\ Font:h15
 
 " dark mode enabled?
 if system("defaults read -g AppleInterfaceStyle") =~ '^Dark'
