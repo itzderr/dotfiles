@@ -155,6 +155,7 @@ let g:jsx_ext_required = 0
 noremap <silent><leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinSize=20
+let g:NERDTreeIgnore=['\.o$', '\.swp$', '\.DS_Store$']
 
 " vim-header
 let g:header_auto_add_header = 0
