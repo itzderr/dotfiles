@@ -67,6 +67,7 @@ nnoremap <CR> i<CR><ESC>
 
 " Y yanks from the cursor to the end of line.
 nnoremap Y y$
+nnoremap ya :%y+<CR>
 
 " d<space> delete or change until the space
 nnoremap d<space> dt<space>
@@ -95,6 +96,9 @@ autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
 " Additional Key-mapping
 map ,b :w<cr>:!clear && bash %<cr>
 map ,p :w<cr>:!clear && python3 %<cr>
+map ,c :w<cr>:!clear && gcc -O -Wall -W -pedantic -std=c99 % -o run && ./run<cr>
+" map ,c :w<cr>:!clear && g++ % -o run && ./run<cr>
+" map ,c :w<cr>:!clear && sh compile-objc.sh && ./main<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -112,8 +116,8 @@ endif
 call plug#begin('~/.vim/plugged')
 
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
-Plug 'dense-analysis/ale'
 Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -138,27 +142,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for':
 
 call plug#end()
 
+" Vim-fugitive
+command -nargs=* Glg Git! lg
+
 " Vim-airline
 let g:airline_powerline_fonts = 1
-
-" Ale
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_fix_on_save = 1
-let g:ale_lint_on_enter = 0
-let g:ale_completion_enabled = 0
-let g:ale_linters = {
-\ 'sh': ['language_server'],
-\ 'javascript': ['eslint'],
-\ 'typescript': ['tsserver', 'tslint'],
-\ 'cpp': [],
-\ 'c': [],
-\ 'objc': [],
-\ 'objcpp': [],
-\ }
-let g:ale_fixers = {
-\ 'javascript': ['eslint'],
-\ 'typescript': ['prettier'],
-\ }
 
 " Allow jsx syntax highlighting for .js files
 let g:jsx_ext_required = 0
@@ -166,14 +154,12 @@ let g:jsx_ext_required = 0
 " NerdTree
 noremap <silent><leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
-
-" Nerdcommenter
-let g:NERDSpaceDelims = 1
+let g:NERDTreeWinSize=20
 
 " vim-header
 let g:header_auto_add_header = 0
 let g:header_field_author = 'Derrick Park'
-let g:header_field_author_email = 'park@wincbay.com'
+let g:header_field_author_email = 'derrick.park@dpcodes.academy'
 let g:header_field_timestamp_format = '%c'
 
 " vim-tagbar
@@ -228,6 +214,10 @@ endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Rename for current word
+nmap <F2> <Plug>(coc-rename)
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language Specific
