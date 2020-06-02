@@ -118,7 +118,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-commentary'
-Plug 'skywind3000/asyncrun.vim' " Run shell commands in the background
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -126,7 +125,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'sheerun/vim-polyglot' " Use vim-polyglot instead of individual syntax hl
 Plug 'alpertuna/vim-header'
-Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'majutsushi/tagbar'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'morhetz/gruvbox'
@@ -138,6 +137,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'  " Unix commands in vim
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'mattn/emmet-vim'
 Plug 'iamcco/markdown-preview.nvim', { 'do': ':call mkdp#util#install()', 'for': 'markdown', 'on': 'MarkdownPreview' }
 
 call plug#end()
@@ -145,8 +145,26 @@ call plug#end()
 " Vim-fugitive
 command -nargs=* Glg Git! lg
 
-" Vim-airline
-let g:airline_powerline_fonts = 1
+" Vim-lightline
+set laststatus=2
+let g:lightline = {
+  \   'colorscheme': 'seoul256',
+  \   'active': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ]
+  \   },
+	\   'component': {
+	\     'lineinfo': ' %3l:%-2v',
+	\   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
+let g:lightline.tabline = {
+  \   'left': [ ['tabs'] ],
+  \   'right': [ ['close'] ]
+  \ }
 
 " Allow jsx syntax highlighting for .js files
 let g:jsx_ext_required = 0
@@ -155,7 +173,7 @@ let g:jsx_ext_required = 0
 noremap <silent><leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
 let g:NERDTreeWinSize=20
-let g:NERDTreeIgnore=['\.o$', '\.swp$', '\.DS_Store$']
+let NERDTreeIgnore=['\.o$', '.swp', '\.DS_Store$', '.git$[[dir]]']
 
 " vim-header
 let g:header_auto_add_header = 0
@@ -168,6 +186,15 @@ nmap <silent><leader>T :TagbarToggle<CR>
 
 " Color scheme
 colorscheme gruvbox
+
+" Emmet-vim
+let g:user_emmet_install_global = 0
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
+autocmd FileType html,css,javascript.jsx EmmetInstall
 
 """"""""""""""""""""""""
 " vim-coc intellisense "
