@@ -21,8 +21,8 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:/Users/park/Library/Android/sdk/platform-tools"
 
 # Set CLICOLOR if you want Ansi Colors in iTerm2 
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
+# export CLICOLOR=1
+# export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # Set colors to match iTerm2 Terminal Colors
 # export TERM=xterm-256color
@@ -62,6 +62,7 @@ alias npmls="npm ls --depth=0 "$@" 2>/dev/null"
 alias lightsail='ssh ubuntu@52.42.93.133'
 alias tm='tmux ls'
 alias tma='tmux attach-session -t'
+alias igios='cp ~/Developer/gitignore ./.gitignore'
 
 # iterm
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
@@ -90,9 +91,6 @@ ide() {
 # nvm stuff
 export NVM_DIR="$HOME/.nvm"
 . "/usr/local/opt/nvm/nvm.sh"
-
-# Add flutterSDK
-export PATH="$PATH:~/flutterSDK/flutter/bin"
 
 # Cabal
 export PATH="$HOME/Library/Haskell/bin:$PATH"

@@ -73,6 +73,9 @@ nnoremap ya :%y+<CR>
 nnoremap d<space> dt<space>
 nnoremap c<space> ct<space>
 
+" Replace shortcut
+nnoremap <leader>r *:%s//
+
 " Copy paste to/from clipboard
 map <silent><leader>p :set paste<CR>"*]p:set nopaste<CR>"
 set clipboard=unnamed
@@ -89,14 +92,12 @@ set viminfo^=%
 " Automatically reload .vimrc when saved 
 au BufWritePost .vimrc so ~/.vimrc
 
-" Autocommand for format on save
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
-autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
-
 " Additional Key-mapping
 map ,b :w<cr>:!clear && bash %<cr>
 map ,p :w<cr>:!clear && python3 %<cr>
+map ,j :w<cr>:!clear && node %<cr>
 map ,c :w<cr>:!clear && gcc -O -Wall -W -pedantic -std=c99 % -o run && ./run<cr>
+" map ,c :w<cr>:!gcc -O -Wall -W -pedantic -std=c99 % -o run && ./run<cr>
 " map ,c :w<cr>:!clear && g++ % -o run && ./run<cr>
 " map ,c :w<cr>:!clear && sh compile-objc.sh && ./main<cr>
 
@@ -169,6 +170,9 @@ let g:lightline.tabline = {
 " Allow jsx syntax highlighting for .js files
 let g:jsx_ext_required = 0
 
+" Fzf
+nnoremap <C-p> :Files<CR>
+
 " NerdTree
 noremap <silent><leader>t :NERDTreeToggle<CR>
 let g:NERDTreeShowHidden=1
@@ -191,11 +195,14 @@ colorscheme gruvbox
 let g:user_emmet_install_global = 0
 let g:user_emmet_leader_key = ','
 let g:user_emmet_settings = {
-\  'javascript.jsx' : {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'typescript' : {
 \      'extends' : 'jsx',
 \  },
 \}
-autocmd FileType html,css,javascript.jsx EmmetInstall
+autocmd FileType html,css,javascript,jsx,typescriptreact EmmetInstall
 
 """"""""""""""""""""""""
 " vim-coc intellisense "
@@ -244,9 +251,8 @@ endfunction
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Rename for current word
-nmap <F2> <Plug>(coc-rename)
-
+" Rename for current word project wide
+nnoremap <leader>pr :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language Specific

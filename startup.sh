@@ -18,7 +18,7 @@ brew install python3
 brew install bash-git-prompt
 
 # Install vim
-brew install macvim --with-override-system-vim
+brew install vim
 
 # Install tools
 brew install cmake
